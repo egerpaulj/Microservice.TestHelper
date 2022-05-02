@@ -31,6 +31,14 @@ namespace Microservice.TestHelper
         {
             string environment = GetEnvironment();
 
+            return GetConfiguration(environment);
+        }
+
+        /// <summary>
+        /// Loads the JSON configuration file based on the environment. E.g. appsettings.{environment}.json
+        /// </summary>
+        public static IConfigurationRoot GetConfiguration(string environment)
+        {
             return new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile($"appsettings.{environment}.json")
